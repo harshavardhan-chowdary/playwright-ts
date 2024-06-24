@@ -1,0 +1,7 @@
+[
+    { "id": "REQ-001", "description": "User login functionality" },
+    { "id": "REQ-002", "description": "User logout functionality" },
+    { "id": "REQ-003", "description": "User registration functionality" },
+    { "id": "REQ-004", "description": "Error message for invalid login" }
+  ]
+  

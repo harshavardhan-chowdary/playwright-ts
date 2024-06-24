@@ -1,0 +1,54 @@
+{
+  "rtm": [
+    {
+      "requirement": {
+        "id": "REQ-001",
+        "description": "User login functionality"
+      },
+      "testCases": [
+        "User can login with valid credentials Test",
+        "User can login with Invalid credentials Test"
+      ]
+    },
+    {
+      "requirement": {
+        "id": "REQ-002",
+        "description": "User logout functionality"
+      },
+      "testCases": []
+    },
+    {
+      "requirement": {
+        "id": "REQ-003",
+        "description": "User registration functionality"
+      },
+      "testCases": [
+        "User can login 03"
+      ]
+    },
+    {
+      "requirement": {
+        "id": "REQ-004",
+        "description": "Error message for invalid login"
+      },
+      "testCases": [
+        "User can login 04"
+      ]
+    }
+  ],
+  "specList": [
+    {
+      "file": "home.spec.ts",
+      "requirements": [
+        "REQ-003",
+        "REQ-004"
+      ]
+    },
+    {
+      "file": "login.spec.ts",
+      "requirements": [
+        "REQ-001"
+      ]
+    }
+  ]
+}
