@@ -5,95 +5,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RTM Dashboard</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', sans-serif;
       margin: 20px;
     }
-    h1, h2 {
-      color: #333;
+    h1 {
+      color: #001f3f; /* Dark blue */
+      margin-bottom: 20px;
     }
-    .table thead th {
-      background-color: #688F8F; /* Color 3 */
+    h2 {
+      color: #003366; /* Medium blue */
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .nav-tabs .nav-link.active {
+      background-color: #370657; /* Light blue */
       color: white;
     }
+    .nav-tabs .nav-link {
+      color: #3d0066; /* Medium blue */
+    }
+    .table thead th {
+      background-color: #3d0066; /* Light blue */
+      color: white;
+    }
+    .table tbody tr {
+      height: 35px;
+    }
     .table tbody tr:hover {
-      background-color: #80BFAF; /* Color 5 */
+      background-color: #3d006671; /* Light blue hover */
       cursor: pointer;
     }
     .card-header {
-      background-color: #95E0CF; /* Color 7 */
-      color: #333;
+      background-color: #3d0066; /* Dark blue */
+      color: white;
     }
     .btn-link {
-      color: #333;
+      color: white;
     }
     .btn-link:hover {
-      color: #5C6F6F; /* Color 2 */
+      color: #0054b380; /* Light blue */
     }
     .card-body {
-      background-color: #ABF2EF; /* Color 9 */
+      background-color: #460066be; /* Medium blue */
+      color: white;
+    }
+    .icon {
+      margin-right: 5px;
+    }
+    .badge-info {
+      background-color: #3d0066; /* Light blue */
+    }
+    .form-control:focus {
+      border-color: #6a0dad; /* Purple */
+      box-shadow: 0 0 5px rgba(106, 13, 173, 0.5); /* Purple */
     }
   </style>
 </head>
-<body class="hold-transition sidebar-mini">
-  <div class="wrapper">
-    <!-- Main content -->
-    <div class="content-wrapper">
-      <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0">Requirement Traceability Matrix</h1>
-            </div>
-          </div>
-        </div>
+<body>
+  <div class="container">
+    <h1>Requirement Traceability Matrix</h1>
+    <ul class="nav nav-tabs" id="rtm-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="requirements-tab" data-toggle="tab" href="#requirements" role="tab" aria-controls="requirements" aria-selected="true">Requirements Coverage</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="spec-map-tab" data-toggle="tab" href="#spec-map" role="tab" aria-controls="spec-map" aria-selected="false">Spec Map</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="rtm-tab-content">
+      <div class="tab-pane fade show active" id="requirements" role="tabpanel" aria-labelledby="requirements-tab">
+        <h2>Requirements Coverage</h2>
+        <input type="text" id="req-search" class="form-control mb-3" placeholder="Search Requirements">
+        <table id="rtm-table" class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th>REQ ID</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody id="rtm-body">
+            <!-- Data will be inserted here -->
+          </tbody>
+        </table>
       </div>
-
-      <section class="content">
-        <div class="container-fluid">
-          <ul class="nav nav-tabs" id="rtm-tabs" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="requirements-tab" data-toggle="tab" href="#requirements" role="tab" aria-controls="requirements" aria-selected="true">Requirements Coverage</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="spec-map-tab" data-toggle="tab" href="#spec-map" role="tab" aria-controls="spec-map" aria-selected="false">Spec Map</a>
-            </li>
-          </ul>
-          <div class="tab-content" id="rtm-tab-content">
-            <div class="tab-pane fade show active" id="requirements" role="tabpanel" aria-labelledby="requirements-tab">
-              <h2>Requirements Coverage</h2>
-              <input class="form-control mb-3" id="requirements-search" type="text" placeholder="Search Requirements...">
-              <table id="rtm-table" class="table table-bordered">
-                <thead class="thead-dark">
-                  <tr>
-                    <th>REQ ID</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody id="rtm-body">
-                  <!-- Data will be inserted here -->
-                </tbody>
-              </table>
-            </div>
-            <div class="tab-pane fade" id="spec-map" role="tabpanel" aria-labelledby="spec-map-tab">
-              <h2>Spec Map</h2>
-              <input class="form-control mb-3" id="spec-map-search" type="text" placeholder="Search Spec Map...">
-              <table id="spec-map-table" class="table table-bordered">
-                <thead class="thead-dark">
-                  <tr>
-                    <th>Spec File</th>
-                    <th>Requirements</th>
-                  </tr>
-                </thead>
-                <tbody id="spec-map-body">
-                  <!-- Data will be inserted here -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div class="tab-pane fade" id="spec-map" role="tabpanel" aria-labelledby="spec-map-tab">
+        <h2>Spec Map</h2>
+        <input type="text" id="spec-search" class="form-control mb-3" placeholder="Search Spec Files">
+        <table id="spec-map-table" class="table table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th>Spec File</th>
+              <th>Requirements</th>
+            </tr>
+          </thead>
+          <tbody id="spec-map-body">
+            <!-- Data will be inserted here -->
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -106,6 +118,40 @@
     document.addEventListener('DOMContentLoaded', () => {
       loadRTM();
     });
+
+    document.addEventListener('input', (event) => {
+      if (event.target.id === 'req-search') {
+        filterTable('rtm-table', event.target.value);
+      } else if (event.target.id === 'spec-search') {
+        filterTable('spec-map-table', event.target.value);
+      }
+    });
+
+    function filterTable(tableId, query) {
+      const table = document.getElementById(tableId);
+      const rows = table.getElementsByTagName('tr');
+      const filter = query.toLowerCase();
+
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName('td');
+        let match = false;
+
+        for (let j = 0; j < cells.length; j++) {
+          if (cells[j]) {
+            if (cells[j].innerText.toLowerCase().indexOf(filter) > -1) {
+              match = true;
+              break;
+            }
+          }
+        }
+
+        if (match) {
+          rows[i].style.display = '';
+        } else {
+          rows[i].style.display = 'none';
+        }
+      }
+    }
   </script>
 </body>
 </html>

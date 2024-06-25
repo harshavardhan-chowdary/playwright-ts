@@ -6,8 +6,19 @@
         "description": "User login functionality"
       },
       "testCases": [
-        "User can login with valid credentials Test",
-        "User can login with Invalid credentials Test"
+        {
+          "description": "User can login with valid credentials Test",
+          "tags": [
+            "@Smaoke",
+            "@UI"
+          ]
+        },
+        {
+          "description": "User can login with Invalid credentials Test",
+          "tags": [
+            "@UI"
+          ]
+        }
       ]
     },
     {
@@ -23,7 +34,10 @@
         "description": "User registration functionality"
       },
       "testCases": [
-        "User can login 03"
+        {
+          "description": "User can login 03",
+          "tags": []
+        }
       ]
     },
     {
@@ -32,7 +46,10 @@
         "description": "Error message for invalid login"
       },
       "testCases": [
-        "User can login 04"
+        {
+          "description": "User can login 04",
+          "tags": []
+        }
       ]
     }
   ],
