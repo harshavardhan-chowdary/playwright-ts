@@ -55,14 +55,14 @@
   ],
   "specList": [
     {
-      "file": "home.spec.ts",
+      "file": "home\\home.spec.ts",
       "requirements": [
         "REQ-003",
         "REQ-004"
       ]
     },
     {
-      "file": "login.spec.ts",
+      "file": "login\\login.spec.ts",
       "requirements": [
         "REQ-001"
       ]

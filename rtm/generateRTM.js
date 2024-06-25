@@ -9,6 +9,7 @@ const readFile = promisify(fs.readFile);
 const readdir = promisify(fs.readdir);
 
 const REQUIREMENT_TAG = '@requirement';
+const TAG_REGEX = /@\w+/g;
 
 async function getRequirements(reqFilePath) {
   const data = await readFile(reqFilePath, 'utf-8');
@@ -111,7 +112,7 @@ async function extractRequirementsAndTags(filePath, keyPrefix) {
       uniqueRequirements.add(requirement);
     });
     specList.push({
-      file: path.basename(file),
+      file: path.relative(testRoot, file), // Store relative path from testRoot
       requirements: Array.from(uniqueRequirements),
     });
   }
